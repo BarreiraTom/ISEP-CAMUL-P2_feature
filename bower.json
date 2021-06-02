@@ -1,10 +1,9 @@
 {
-  "name": "material-dashboard-react",
-  "homepage": "https://github.com/creativetimofficial/material-dashboard-react",
+  "name": "CAMUL Project 2 - Feature",
+  "homepage": "",
   "authors": [
-    "creative-tim"
   ],
-  "description": "A Badass Material-UI Kit based on Material Design",
+  "description": "CAMUL Project 2 - Feature",
   "main": "public/index.html",
   "keywords": [
     "material",
@@ -15,7 +14,7 @@
     "google",
     "twitter"
   ],
-  "license": "Creative TIM License",
+  "license": "",
   "ignore": [
     "**/.*",
     "node_modules",
