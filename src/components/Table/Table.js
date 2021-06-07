@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -35,7 +36,9 @@ export default function CustomTable(props) {
           </TableHead>
         ) : null}
         <TableBody>
-          {tableData.map((prop, key) => {
+          {tableData.map((props, key) => {
+            let reqDate = props.createdAt.split("T")[0];
+            let prop = [reqDate, props.classroom, props.pavilion, props.dateForReq, props.hourForReq,  props.requesitorId];
             return (
               <TableRow key={key} className={classes.tableBodyRow}>
                 {prop.map((prop, key) => {
@@ -68,6 +71,5 @@ CustomTable.propTypes = {
     "rose",
     "gray",
   ]),
-  tableHead: PropTypes.arrayOf(PropTypes.string),
-  tableData: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  tableHead: PropTypes.arrayOf(PropTypes.string)
 };

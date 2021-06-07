@@ -33,7 +33,7 @@ const switchRoutes = (
       return null;
     })}
     <Redirect from="/" to="/admin/dashboard" />
-    <Redirect from="/admin" to="/admin/dashboard" />
+    <Redirect from="/admin/*" to="/admin/dashboard" />
     <Redirect from="/material-dashboard-react" to="/admin/dashboard" />
   </Switch>
 );
