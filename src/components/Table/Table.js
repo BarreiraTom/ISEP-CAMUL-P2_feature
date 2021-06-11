@@ -38,7 +38,8 @@ export default function CustomTable(props) {
         <TableBody>
           {tableData.map((props, key) => {
             let reqDate = props.createdAt.split("T")[0];
-            let prop = [reqDate, props.classroom, props.pavilion, props.dateForReq, props.hourForReq,  props.requesitorId];
+            let prop = [reqDate, props.classroom, props.pavilion, props.items, props.dateForReq, props.hourForReq,  props.requesitorId];
+            console.log(prop);
             return (
               <TableRow key={key} className={classes.tableBodyRow}>
                 {prop.map((prop, key) => {

@@ -15,7 +15,8 @@ exports.create = (req, res) => {
         pavilion: req.body.pavilion,
         dateForReq: req.body.dateForReq,
         hourForReq: req.body.hourForReq,
-        requesitorId: req.body.requesitorId
+        requesitorId: req.body.requesitorId,
+        items: req.body.items
     });
 
     // Save Tutorial in the database

@@ -47,7 +47,7 @@ export default function Dashboard() {
           <CardBody>
             <Table
               tableHeaderColor="danger"
-              tableHead={["Data da Requisição", "Sala", "Pavilhão", "Data para Requisição", "Hora para Requisição", "User ID"]}
+              tableHead={["Data da Requisição", "Sala", "Pavilhão", "Items", "Data para Requisição", "Hora para Requisição", "User ID"]}
               tableData={items}
             />
           </CardBody>

@@ -7,7 +7,8 @@ module.exports = mongoose => {
           pavilion: String,
           dateForReq: String,
           hourForReq: String,
-          requesitorId: String
+          requesitorId: String,
+          items: String
         },
         { timestamps: true }
       )
