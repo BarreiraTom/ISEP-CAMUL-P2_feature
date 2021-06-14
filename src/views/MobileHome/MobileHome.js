@@ -16,9 +16,14 @@ import Select from '@material-ui/core/Select';
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
+  KeyboardTimePicker
 } from '@material-ui/pickers';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
+
+import InteractiveList from "react-interactive-list";
+import "react-interactive-list/lib/styles/react-interactive-list.css";
+import "react-interactive-list/lib/styles/react-input-list.css";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -49,8 +54,11 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
     width: 200,
   },
-  picker:{
+  picker: {
     margin: "8px"
+  },
+  plusBtn: {
+    padding: "5px"
   }
 }));
 
@@ -61,6 +69,10 @@ export default function Dashboard() {
   const [classroom, setClassroom] = React.useState('');
   const [classroomInput, setClassroomInput] = React.useState(false);
   const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const [selectedHour, setSelectedHour] = React.useState(new Date('2014-08-18T09:00:00'));
+  // const [materialNumber, setMaterialNumber] = React.useState(0);
+  // const [userMaterialList, setMaterialList] = React.useState([]);
+
   const pavillions = ["A", "B", "C", "D", "E"];
   const floor = ["0", "1", "2", "3", "4"];
   const classrooms = ["001", "002", "003", "004", "005"];
@@ -78,6 +90,33 @@ export default function Dashboard() {
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
+
+  const handleHourChange = (date) => {
+    setSelectedHour(date);
+  };
+
+  const renderInput = (props, removable, uniqueId, index, onChangeCallback) => {
+    let inputClasses = "interactive-list-input";
+    if (removable) {
+      inputClasses += " interactive-list-input--removable";
+    }
+
+    return (
+      <div className="table">
+        <span className="table-cell">{index + 1}</span>
+
+        <div className="table-cell">
+          <input
+            type="text"
+            className={inputClasses}
+            onChange={e => onChangeCallback(e.target.value)}
+            // eslint-disable-next-line react/prop-types
+            placeholder={props.placeholder}
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -130,7 +169,7 @@ export default function Dashboard() {
                     disableToolbar
                     minDate={new Date()}
                     variant="inline"
-                    format="MM/dd/yyyy"
+                    format="dd/MM/yyyy"
                     margin="normal"
                     id="date-picker-inline"
                     label="Data para Requisição"
@@ -140,8 +179,29 @@ export default function Dashboard() {
                       'aria-label': 'change date',
                     }}
                   />
+                  <KeyboardTimePicker
+                    ampm={false}
+                    margin="normal"
+                    id="time-picker"
+                    label="Data para Requisição"
+                    value={selectedHour}
+                    onChange={handleHourChange}
+                    KeyboardButtonProps={{
+                      'aria-label': 'change time',
+                    }}
+                  />
                 </Grid>
               </MuiPickersUtilsProvider>
+            </div>
+            <div>
+              <h3>Lista de Material</h3>
+              <InteractiveList
+                renderItem={renderInput}
+                placeholder="Some Text"
+                addButtonText="Adicionar Material"
+                maxItems={3}
+              />
+
             </div>
           </CardBody>
         </Card>
